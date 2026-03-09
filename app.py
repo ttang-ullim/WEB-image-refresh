@@ -465,6 +465,11 @@ def favicon():
     return send_from_directory(app.static_folder, "favicon.ico", mimetype="image/x-icon")
 
 
+@app.route("/ads.txt")
+def ads_txt():
+    return send_from_directory(app.root_path, "ads.txt", mimetype="text/plain")
+
+
 @app.route("/")
 def index():
     record_visit()
@@ -637,6 +642,7 @@ def download_job(job_id: str):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
