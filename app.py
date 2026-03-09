@@ -23,7 +23,7 @@ APP_DISPLAY_NAME = "루멕스 이미지 리프레시"
 VISITOR_ACTIVE_WINDOW_MINUTES = 5
 VISITOR_RETENTION_DAYS = 30
 OWNER_VISITOR_TOKEN = os.environ.get("LUMEX_OWNER_TOKEN", "lumex-refresh-owner")
-CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL", "your-email@example.com")
+CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL", "rumex.soft@gmail.com")
 SITE_LINKS = [
     {"label": "홈", "href": "/"},
     {"label": "사용 가이드", "href": "/guide"},
@@ -678,6 +678,7 @@ def download_job(job_id: str):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
