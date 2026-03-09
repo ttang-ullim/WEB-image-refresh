@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ app_name or '루멕스 이미지 리프레시' }} · Web</title>
+  <title>{{ app_name }} · Web</title>
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico', v='20260309') }}" />
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico', v='20260309') }}" />
   <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png', v='20260309') }}" />
@@ -14,10 +14,19 @@
   <div class="bg-orb orb-a"></div>
   <div class="bg-orb orb-b"></div>
 
+  <nav class="top-nav">
+    <a class="brand" href="/">{{ app_name }}</a>
+    <div class="nav-links">
+      {% for link in site_links %}
+      <a href="{{ link.href }}">{{ link.label }}</a>
+      {% endfor %}
+    </div>
+  </nav>
+
   <main class="app-shell">
     <header class="card hero">
       <div>
-        <h1>{{ app_name or '루멕스 이미지 리프레시' }}</h1>
+        <h1>{{ app_name }}</h1>
         <p>파일/폴더 업로드 후 옵션을 선택하면 결과를 ZIP으로 한 번에 다운로드합니다.</p>
       </div>
     </header>
@@ -184,13 +193,23 @@
       </div>
     </section>
 
+    <section class="card content-card">
+      <h2>루멕스 이미지 리프레시 소개</h2>
+      <p>이 도구는 원본 이미지를 여러 장으로 자동 변형해 테스트 콘텐츠를 만드는 웹 도구입니다. 업로드한 파일은 변환 작업에만 사용되며 결과는 ZIP으로 바로 내려받을 수 있습니다.</p>
+      <p>랜덤 크롭, 리사이즈, 회전, 노이즈, 색감 조정, 테두리 옵션을 조합하면 유사하지만 완전히 동일하지 않은 이미지 세트를 빠르게 만들 수 있습니다. 운영자는 이 기능을 통해 썸네일 실험, 광고 소재 A/B 테스트, 내부 데이터셋 준비를 효율화할 수 있습니다.</p>
+    </section>
 
+    <section class="card content-card">
+      <h2>사이트 이용 안내</h2>
+      <ul>
+        <li>저작권이 있거나 민감한 이미지는 업로드 전에 권한을 확인해 주세요.</li>
+        <li>너무 큰 원본 파일을 대량 업로드하면 처리 시간이 길어질 수 있습니다.</li>
+        <li>오류가 반복되면 파일 형식과 크기, 옵션 값을 먼저 점검해 주세요.</li>
+      </ul>
+      <p>자세한 설명은 <a href="/guide">사용 가이드</a>, 운영 정보는 <a href="/about">서비스 소개</a>, 정책은 <a href="/privacy">개인정보처리방침</a>, 문의는 <a href="/contact">문의 페이지</a>에서 확인할 수 있습니다.</p>
+    </section>
   </main>
 
   <script src="{{ url_for('static', filename='app.js') }}" defer></script>
 </body>
 </html>
-
-
-
-

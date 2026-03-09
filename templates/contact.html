@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ app_name }} · 문의</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico', v='20260309') }}" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2506506715755962" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <nav class="top-nav">
+    <a class="brand" href="/">{{ app_name }}</a>
+    <div class="nav-links">{% for link in site_links %}<a href="{{ link.href }}">{{ link.label }}</a>{% endfor %}</div>
+  </nav>
+
+  <main class="app-shell">
+    <section class="card content-card">
+      <h1>문의</h1>
+      <p>서비스 오류, 제휴, 정책 문의는 아래 이메일로 보내 주세요.</p>
+      <p><a href="mailto:{{ contact_email }}">{{ contact_email }}</a></p>
+      <h2>문의 시 포함하면 좋은 정보</h2>
+      <ul>
+        <li>문제가 발생한 페이지 주소</li>
+        <li>발생 시각과 사용 브라우저</li>
+        <li>오류 메시지 또는 화면 캡처</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

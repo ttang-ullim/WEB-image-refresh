@@ -23,6 +23,14 @@ APP_DISPLAY_NAME = "루멕스 이미지 리프레시"
 VISITOR_ACTIVE_WINDOW_MINUTES = 5
 VISITOR_RETENTION_DAYS = 30
 OWNER_VISITOR_TOKEN = os.environ.get("LUMEX_OWNER_TOKEN", "lumex-refresh-owner")
+CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL", "your-email@example.com")
+SITE_LINKS = [
+    {"label": "홈", "href": "/"},
+    {"label": "사용 가이드", "href": "/guide"},
+    {"label": "서비스 소개", "href": "/about"},
+    {"label": "개인정보처리방침", "href": "/privacy"},
+    {"label": "문의", "href": "/contact"},
+]
 
 JOBS: dict[str, dict[str, Any]] = {}
 JOBS_LOCK = threading.Lock()
@@ -460,6 +468,10 @@ def run_job(job_id: str, input_paths: list[Path], settings: dict[str, Any]) -> N
         update_job(job_id, status="failed", error=str(exc))
 
 
+@app.context_processor
+def inject_common_context():
+    return {"app_name": APP_DISPLAY_NAME, "site_links": SITE_LINKS}
+
 @app.route("/favicon.ico")
 def favicon():
     return send_from_directory(app.static_folder, "favicon.ico", mimetype="image/x-icon")
@@ -473,8 +485,32 @@ def ads_txt():
 @app.route("/")
 def index():
     record_visit()
-    return render_template("index.html", app_name=APP_DISPLAY_NAME)
+    return render_template("index.html")
 
+
+@app.route("/guide")
+def guide_page():
+    return render_template("guide.html", contact_email=CONTACT_EMAIL)
+
+
+@app.route("/about")
+def about_page():
+    return render_template("about.html", contact_email=CONTACT_EMAIL)
+
+
+@app.route("/privacy")
+def privacy_page():
+    return render_template("privacy.html", contact_email=CONTACT_EMAIL)
+
+
+@app.route("/contact")
+def contact_page():
+    return render_template("contact.html", contact_email=CONTACT_EMAIL)
+
+
+@app.errorhandler(404)
+def page_not_found(_error):
+    return render_template("404.html"), 404
 
 @app.route("/api/owner/visitors", methods=["GET"])
 def owner_visitor_stats():
@@ -642,6 +678,7 @@ def download_job(job_id: str):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 

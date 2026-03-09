@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ app_name }} · 페이지를 찾을 수 없습니다</title>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico', v='20260309') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <nav class="top-nav">
+    <a class="brand" href="/">{{ app_name }}</a>
+    <div class="nav-links">{% for link in site_links %}<a href="{{ link.href }}">{{ link.label }}</a>{% endfor %}</div>
+  </nav>
+
+  <main class="app-shell">
+    <section class="card content-card">
+      <h1>페이지를 찾을 수 없습니다 (404)</h1>
+      <p>입력한 주소가 잘못되었거나 페이지가 이동되었습니다.</p>
+      <p><a href="/">메인 페이지로 이동</a></p>
+    </section>
+  </main>
+</body>
+</html>
