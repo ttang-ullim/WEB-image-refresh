@@ -119,3 +119,42 @@ footer {
   }
   .card { padding: 11px; }
 }
+
+.boot-warn {
+  margin: 8px 0 0;
+  color: #d11717;
+  font-weight: 800;
+  font-size: 0.86rem;
+}
+
+/* Coupang side banners */
+.side-coupang-banner {
+  position: fixed;
+  top: 18px;
+  width: 140px;
+  height: 1000px;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.side-coupang-banner.left {
+  left: 8px;
+}
+
+.side-coupang-banner.right {
+  right: 8px;
+}
+
+.side-coupang-banner iframe {
+  width: 140px !important;
+  height: 1000px !important;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 1100px) {
+  .side-coupang-banner {
+    display: none;
+  }
+}
+

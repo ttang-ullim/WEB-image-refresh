@@ -7,13 +7,38 @@
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico', v='20260309') }}" />
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico', v='20260309') }}" />
   <link rel="apple-touch-icon" href="{{ url_for('static', filename='apple-touch-icon.png', v='20260309') }}" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2506506715755962" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
   <div class="bg-orb orb-a"></div>
   <div class="bg-orb orb-b"></div>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
 
+  <aside class="side-coupang-banner left" aria-label="쿠팡 파트너스 좌측 배너">
+    <script>
+      new PartnersCoupang.G({
+        id: 971229,
+        template: "carousel",
+        trackingCode: "AF2729969",
+        width: "140",
+        height: "1000",
+        tsource: ""
+      });
+    </script>
+  </aside>
+
+  <aside class="side-coupang-banner right" aria-label="쿠팡 파트너스 우측 배너">
+    <script>
+      new PartnersCoupang.G({
+        id: 971229,
+        template: "carousel",
+        trackingCode: "AF2729969",
+        width: "140",
+        height: "1000",
+        tsource: ""
+      });
+    </script>
+  </aside>
   <nav class="top-nav">
     <a class="brand" href="/">{{ app_name }}</a>
     <div class="nav-links">
@@ -217,5 +242,4 @@
   <script src="{{ url_for('static', filename='app.js') }}" defer></script>
 </body>
 </html>
-
 
