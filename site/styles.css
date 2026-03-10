@@ -123,8 +123,8 @@ footer {
 
 .boot-warn {
   margin: 8px 0 0;
-  color: #d11717;
-  font-weight: 800;
+  color: #ff2a2a !important;
+  font-weight: 900;
   font-size: 0.86rem;
 }
 
@@ -158,6 +158,4 @@ footer {
     display: none;
   }
 }
-
-
 

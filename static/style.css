@@ -339,10 +339,18 @@ input[type="range"] {
   box-shadow: 0 12px 26px rgba(8, 52, 124, 0.35);
 }
 
+
 .run-note {
   margin: 0 0 9px;
   color: rgba(235, 244, 255, 0.9);
   font-size: 0.8rem;
+}
+.boot-warn {
+  margin: 9px 0 2px;
+  color: #ff5a5a !important;
+  font-size: 0.82rem;
+  font-weight: 900;
+  text-align: center;
 }
 
 .run-cta {
@@ -654,6 +662,5 @@ input[type="range"] {
     display: none;
   }
 }
-
 
 

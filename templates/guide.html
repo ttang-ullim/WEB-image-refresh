@@ -8,6 +8,33 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
+  <script src="https://ads-partners.coupang.com/g.js"></script>
+
+  <aside class="side-coupang-banner left" aria-label="쿠팡 파트너스 좌측 배너">
+    <script>
+      new PartnersCoupang.G({
+        id: 971229,
+        template: "carousel",
+        trackingCode: "AF2729969",
+        width: "140",
+        height: "1000",
+        tsource: ""
+      });
+    </script>
+  </aside>
+
+  <aside class="side-coupang-banner right" aria-label="쿠팡 파트너스 우측 배너">
+    <script>
+      new PartnersCoupang.G({
+        id: 971229,
+        template: "carousel",
+        trackingCode: "AF2729969",
+        width: "140",
+        height: "1000",
+        tsource: ""
+      });
+    </script>
+  </aside>
   <nav class="top-nav">
     <a class="brand" href="/">{{ app_name }}</a>
     <div class="nav-links">{% for link in site_links %}<a href="{{ link.href }}">{{ link.label }}</a>{% endfor %}</div>
@@ -37,5 +64,4 @@
   </main>
 </body>
 </html>
-
 
