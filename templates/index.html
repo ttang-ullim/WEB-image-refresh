@@ -206,10 +206,16 @@
         <li>너무 큰 원본 파일을 대량 업로드하면 처리 시간이 길어질 수 있습니다.</li>
         <li>오류가 반복되면 파일 형식과 크기, 옵션 값을 먼저 점검해 주세요.</li>
       </ul>
-      <p>자세한 설명은 <a href="/guide">사용 가이드</a>, 운영 정보는 <a href="/about">서비스 소개</a>, 정책은 <a href="/privacy">개인정보처리방침</a>, 문의는 <a href="/contact">문의 페이지</a>에서 확인할 수 있습니다.</p>
+      <p>자세한 설명은 <a href="/guide">사용 가이드</a>, 운영 정보는 <a href="/about">서비스 소개</a>, 정책은 <a href="/terms">이용약관</a> 및 <a href="/privacy">개인정보처리방침</a>, 문의는 <a href="/contact">문의 페이지</a>에서 확인할 수 있습니다.</p>
+    </section>
+  
+    <section class="card site-footer">
+      <p>© {{ app_name }} · 문의: <a href="mailto:{{ contact_email }}">{{ contact_email }}</a></p>
     </section>
   </main>
 
   <script src="{{ url_for('static', filename='app.js') }}" defer></script>
 </body>
 </html>
+
+

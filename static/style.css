@@ -608,3 +608,18 @@ input[type="range"] {
     align-items: flex-start;
   }
 }
+
+.site-footer {
+  padding: 8px 10px;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 0.74rem;
+  color: #5a6d89;
+  text-align: center;
+}
+
+.site-footer a {
+  color: #0a4fb9;
+}

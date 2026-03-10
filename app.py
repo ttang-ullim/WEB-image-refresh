@@ -28,9 +28,11 @@ SITE_LINKS = [
     {"label": "홈", "href": "/"},
     {"label": "사용 가이드", "href": "/guide"},
     {"label": "서비스 소개", "href": "/about"},
+    {"label": "이용약관", "href": "/terms"},
     {"label": "개인정보처리방침", "href": "/privacy"},
     {"label": "문의", "href": "/contact"},
 ]
+PUBLIC_PAGES = ["/", "/guide", "/about", "/terms", "/privacy", "/contact"]
 
 JOBS: dict[str, dict[str, Any]] = {}
 JOBS_LOCK = threading.Lock()
@@ -470,7 +472,7 @@ def run_job(job_id: str, input_paths: list[Path], settings: dict[str, Any]) -> N
 
 @app.context_processor
 def inject_common_context():
-    return {"app_name": APP_DISPLAY_NAME, "site_links": SITE_LINKS}
+    return {"app_name": APP_DISPLAY_NAME, "site_links": SITE_LINKS, "contact_email": CONTACT_EMAIL}
 
 @app.route("/favicon.ico")
 def favicon():
@@ -480,6 +482,21 @@ def favicon():
 @app.route("/ads.txt")
 def ads_txt():
     return send_from_directory(app.root_path, "ads.txt", mimetype="text/plain")
+
+
+@app.route("/robots.txt")
+def robots_txt():
+    sitemap_url = request.url_root.rstrip("/") + "/sitemap.xml"
+    body = "User-agent: *\nAllow: /\nSitemap: " + sitemap_url + "\n"
+    return body, 200, {"Content-Type": "text/plain; charset=utf-8"}
+
+
+@app.route("/sitemap.xml")
+def sitemap_xml():
+    base = request.url_root.rstrip("/")
+    urls = "".join([f"<url><loc>{base}{path}</loc></url>" for path in PUBLIC_PAGES])
+    body = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">" + urls + "</urlset>"
+    return body, 200, {"Content-Type": "application/xml; charset=utf-8"}
 
 
 @app.route("/")
@@ -496,6 +513,11 @@ def guide_page():
 @app.route("/about")
 def about_page():
     return render_template("about.html", contact_email=CONTACT_EMAIL)
+
+
+@app.route("/terms")
+def terms_page():
+    return render_template("terms.html", contact_email=CONTACT_EMAIL)
 
 
 @app.route("/privacy")
@@ -678,6 +700,8 @@ def download_job(job_id: str):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
 
 
 
