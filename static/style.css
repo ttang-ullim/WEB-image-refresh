@@ -627,7 +627,7 @@ input[type="range"] {
 /* Coupang side banners */
 .side-coupang-banner {
   position: absolute;
-  top: 18px;
+  top: 64px;
   width: 140px;
   height: 1000px;
   z-index: 3;
@@ -635,11 +635,11 @@ input[type="range"] {
 }
 
 .side-coupang-banner.left {
-  left: calc(50% - 525px);
+  left: calc(50% - 545px);
 }
 
 .side-coupang-banner.right {
-  right: calc(50% - 525px);
+  right: calc(50% - 545px);
 }
 
 .side-coupang-banner iframe {

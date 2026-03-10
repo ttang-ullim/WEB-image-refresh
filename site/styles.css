@@ -131,7 +131,7 @@ footer {
 /* Coupang side banners */
 .side-coupang-banner {
   position: absolute;
-  top: 20px;
+  top: 64px;
   width: 140px;
   height: 1000px;
   z-index: 5;
@@ -139,11 +139,11 @@ footer {
 }
 
 .side-coupang-banner.left {
-  left: calc(50% - 605px);
+  left: calc(50% - 625px);
 }
 
 .side-coupang-banner.right {
-  right: calc(50% - 605px);
+  right: calc(50% - 625px);
 }
 
 .side-coupang-banner iframe {
