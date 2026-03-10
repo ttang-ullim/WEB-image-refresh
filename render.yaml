@@ -10,3 +10,10 @@
         value: 3.12.3
       - key: LUMEX_OWNER_TOKEN
         generateValue: true
+      - key: CONTACT_EMAIL
+        value: rumex.soft@gmail.com
+
+  - type: static
+    name: rumex-image-refresh-site
+    staticPublishPath: site
+    pullRequestPreviewsEnabled: false

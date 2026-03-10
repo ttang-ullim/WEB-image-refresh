@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rumex-image-refresh-site.onrender.com/sitemap.xml

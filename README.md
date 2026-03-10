@@ -1,52 +1,48 @@
 ﻿# 루멕스 이미지 리프레시 (Web)
 
-기존 Tkinter "이미지 세탁기" 기능을 웹으로 옮긴 Flask 버전입니다.
+Flask 기반 이미지 변환 도구 + AdSense 승인용 정적 안내 사이트를 함께 포함한 프로젝트입니다.
 
-## 포함 기능
-- 파일 또는 폴더(브라우저 업로드) 선택
-- 원본 1장당 N개 생성
-- 메타데이터 재생성(EXIF 제거)
-- 랜덤 크롭
-- 랜덤 리사이즈(100% ± X%)
-- 랜덤 회전(-X° ~ +X°) + 안전 크롭
-- 보이지 않는 노이즈 오버레이
-- 랜덤 밝기/채도 조정
-- 테두리(고정/랜덤)
-- 출력 포맷: 원본 유지 / JPG / PNG / WEBP
-- 결과 ZIP 다운로드
-- 숨김 방문자 API(오너 토큰 필요)
+## 구조
+- `app.py`: 이미지 변환 API/웹 도구(Free Web Service)
+- `site/`: 항상 켜져 있는 정적 안내 사이트(Free Static Site)
+- `templates/`, `static/`: Flask 웹 UI
 
-## 로컬 실행
-1. 라이브러리 설치
+## 포함 기능(Flask 도구)
+- 파일/폴더 업로드, 랜덤 변형 옵션, ZIP 다운로드
+- 숨김 방문자 API (`/api/owner/visitors?token=...`)
+
+## 포함 기능(정적 사이트: `site/`)
+- 홈/가이드/소개/이용약관/개인정보처리방침/문의 페이지
+- `ads.txt`, `robots.txt`, `sitemap.xml`
+- AdSense 스크립트 포함
+
+## 로컬 실행(Flask)
 ```powershell
 python -m pip install -r requirements.txt
-```
-
-2. 서버 실행
-```powershell
 python app.py
 ```
+접속: `http://127.0.0.1:5000`
 
-3. 브라우저 접속
-- `http://127.0.0.1:5000`
+## Render 배포(권장: Blueprint)
+이 repo의 `render.yaml`은 서비스 2개를 만듭니다.
+1. Web Service: `lumex-image-refresh` (Flask 도구)
+2. Static Site: `rumex-image-refresh-site` (`site/` 배포)
 
-## Render 배포
-이 프로젝트는 `render.yaml`이 포함되어 있어 GitHub 연결 후 자동 인식됩니다.
+### 배포 후 꼭 할 것
+- Static Site 도메인이 확정되면 `site/robots.txt`, `site/sitemap.xml`의 도메인을 실제 값으로 교체 후 다시 push
+- AdSense 심사는 Static Site 도메인으로 진행
 
-1. GitHub에 현재 폴더(`이미지변환기`)를 그대로 push
-2. Render 대시보드에서 `New +` -> `Blueprint` 선택
-3. 저장소 선택 후 배포
+## AdSense 점검 URL(Static Site)
+- `/ads.txt`
+- `/robots.txt`
+- `/sitemap.xml`
+- `/privacy.html`
+- `/terms.html`
+- `/contact.html`
 
-수동으로 Web Service 만들 경우:
-- Runtime: `Python`
-- Build Command: `pip install -r requirements.txt`
-- Start Command: `gunicorn app:app --bind 0.0.0.0:$PORT --timeout 300`
-
-## 방문자 통계(숨김)
-- 엔드포인트: `/api/owner/visitors?token=...`
-- 기본 토큰: `lumex-refresh-owner`
-- 운영에서는 Render 환경변수 `LUMEX_OWNER_TOKEN`을 꼭 바꿔주세요.
+## 환경변수
+- `CONTACT_EMAIL` (기본: `rumex.soft@gmail.com`)
+- `LUMEX_OWNER_TOKEN`
 
 ## 폴더 구조 관련
-- `폴더 -> 폴더 -> 이미지변환기`처럼 깊은 구조여도 문제 없습니다.
-- GitHub에는 "최종 프로젝트 루트(이미지변환기)"만 저장소로 올리면 됩니다.
+상위 폴더가 여러 겹이어도 문제 없습니다. GitHub에는 `이미지변환기` 폴더를 repo 루트로 올리면 됩니다.
