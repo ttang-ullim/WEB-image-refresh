@@ -14,6 +14,7 @@ body {
   font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
   color: var(--ink);
   background: radial-gradient(circle at 8% 8%, #dff0ff, transparent 35%), radial-gradient(circle at 95% 88%, #ffe7d5, transparent 40%), var(--bg);
+  position: relative;
 }
 
 .shell {
@@ -129,8 +130,8 @@ footer {
 
 /* Coupang side banners */
 .side-coupang-banner {
-  position: fixed;
-  top: 18px;
+  position: absolute;
+  top: 20px;
   width: 140px;
   height: 1000px;
   z-index: 5;
@@ -138,11 +139,11 @@ footer {
 }
 
 .side-coupang-banner.left {
-  left: 8px;
+  left: calc(50% - 620px);
 }
 
 .side-coupang-banner.right {
-  right: 8px;
+  right: calc(50% - 620px);
 }
 
 .side-coupang-banner iframe {
@@ -152,9 +153,11 @@ footer {
   display: block;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1240px) {
   .side-coupang-banner {
     display: none;
   }
 }
+
+
 
