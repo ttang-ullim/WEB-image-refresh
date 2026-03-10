@@ -345,14 +345,6 @@ input[type="range"] {
   color: rgba(235, 244, 255, 0.9);
   font-size: 0.8rem;
 }
-.boot-warn {
-  margin: 9px 0 2px;
-  color: #ff5a5a !important;
-  font-size: 0.82rem;
-  font-weight: 900;
-  text-align: center;
-}
-
 .run-cta {
   width: 100%;
   min-height: 62px;
@@ -643,11 +635,11 @@ input[type="range"] {
 }
 
 .side-coupang-banner.left {
-  left: calc(50% - 540px);
+  left: calc(50% - 525px);
 }
 
 .side-coupang-banner.right {
-  right: calc(50% - 540px);
+  right: calc(50% - 525px);
 }
 
 .side-coupang-banner iframe {
@@ -662,5 +654,4 @@ input[type="range"] {
     display: none;
   }
 }
-
 

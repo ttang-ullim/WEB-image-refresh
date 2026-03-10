@@ -139,11 +139,11 @@ footer {
 }
 
 .side-coupang-banner.left {
-  left: calc(50% - 620px);
+  left: calc(50% - 605px);
 }
 
 .side-coupang-banner.right {
-  right: calc(50% - 620px);
+  right: calc(50% - 605px);
 }
 
 .side-coupang-banner iframe {
